@@ -1,4 +1,3 @@
-import ClientComponent from './ClientComponent'
-import ServerComponent from './ServerComponent'
+import ReleasePage from './ReleasePage'
 
-export { ClientComponent, ServerComponent }
+export { ReleasePage }

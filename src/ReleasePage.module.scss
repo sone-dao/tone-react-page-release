@@ -1,0 +1,106 @@
+.component {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.player {
+  align-items: center;
+  display: flex;
+  line-height: 1.6;
+  padding: 1em;
+  width: 100%;
+
+  i {
+    border: 1px solid black;
+    border-radius: 14px;
+    font-size: 2em;
+    padding: 0.66em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 0.5rem;
+  margin: 0 2rem;
+
+  a {
+    font-weight: bold;
+  }
+}
+
+.songList {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.songListPod {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.songListPodSong {
+  align-items: center;
+  display: flex;
+  font-size: 0.5rem;
+}
+
+.songListPodNumber {
+  margin-right: 1rem;
+  text-align: right;
+  width: 3%;
+}
+
+.songListPodLyrics {
+  line-height: 1.6;
+  padding: 1rem;
+  white-space: pre-line;
+
+  span {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  i {
+    font-size: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+.releaseDescription {
+  display: flex;
+  line-height: 1.6;
+  overflow: hidden;
+  padding: 1rem;
+  white-space: pre-line;
+}
+
+.readMore {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+
+  span {
+    align-items: center;
+    border: 1px solid black;
+    border-radius: var(--border-radius-main);
+    display: flex;
+    padding: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

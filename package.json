@@ -1,12 +1,11 @@
 {
-  "name": "@sone-dao/tone-template-react",
-  "version": "1.0.3",
+  "name": "@sone-dao/tone-react-page-release",
+  "version": "0.1.0",
   "main": "dist/cjs/src/index.js",
   "module": "dist/esm/src/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/sone-dao/tone-template-react.git",
+  "repository": "https://github.com/sone-dao/tone-react-page-release.git",
   "author": "Sone DAO <dev@sone.works>",
-  "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup -c",
@@ -48,6 +47,7 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
+    "@sone-dao/tone-react-core-ui": "^1.8.0",
     "next": "^13.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
