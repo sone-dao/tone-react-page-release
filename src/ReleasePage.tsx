@@ -49,7 +49,6 @@ export default function ReleasePage({}: IReleasePageProps) {
           width="1000"
           src={previewImageUrl}
           style={{ maxWidth: '100%', height: 'auto' }}
-          priority
         />
       )}
       <ReleasePlayer
