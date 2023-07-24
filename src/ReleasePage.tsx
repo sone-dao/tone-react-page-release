@@ -1,7 +1,6 @@
 'use client'
 
 import { Page } from '@sone-dao/tone-react-core-ui'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
@@ -41,17 +40,14 @@ export default function ReleasePage({ params }: IReleasePageProps) {
   return (
     <Page className={styles.component}>
       {!release.artwork.cover ? (
-        <Image
-          alt=""
+        <img
           height="500"
           width="500"
           src="https://placehold.co/500x500/png"
           style={{ maxWidth: '100%', height: 'auto' }}
-          priority
         />
       ) : (
         <img
-          alt=""
           height="1000"
           width="1000"
           src={release.artwork.cover + '/large'}
