@@ -2,17 +2,23 @@
 
 import { Page } from '@sone-dao/tone-react-core-ui'
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
 import SongListPod from './components/SongListPod'
 
-interface IReleasePageProps {
-  release: any
-  songs: any
-}
+interface IReleasePageProps {}
 
-export default function ReleasePage({ release, songs }: IReleasePageProps) {
+export default function ReleasePage({}: IReleasePageProps) {
+  const [release, setRelease] = useState<any>()
+  const [songs, setSongs] = useState<any>()
+  const params = useParams()
+
+  useEffect(() => {
+    loadRelease()
+  })
   return (
     <Page className={styles.component}>
       <Image
@@ -36,4 +42,35 @@ export default function ReleasePage({ release, songs }: IReleasePageProps) {
       <ReleaseDescription description={release.description} />
     </Page>
   )
+
+  async function loadRelease() {
+    getRelease(params.releaseId).then((release) => setRelease(release))
+    getReleaseSongs(params.releaseId).then((songs) => setSongs(songs))
+  }
+
+  async function getRelease(releaseId: string) {
+    const response = await fetch(
+      'https://api.tone.audio/v1/catalog/releases?releaseId=' + releaseId,
+      { cache: 'no-store' }
+    )
+
+    !response.ok && console.log(response)
+
+    const data = await response.json()
+
+    return data.release
+  }
+
+  async function getReleaseSongs(releaseId: string) {
+    const response = await fetch(
+      'https://api.tone.audio/v1/catalog/releases/' + releaseId + '/songs',
+      { cache: 'no-store' }
+    )
+
+    !response.ok && console.log(response)
+
+    const data = await response.json()
+
+    return data.songs
+  }
 }
