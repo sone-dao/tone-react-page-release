@@ -50,7 +50,7 @@ export default function ReleasePage({ params }: IReleasePageProps) {
           priority
         />
       ) : (
-        <Image
+        <img
           alt=""
           height="1000"
           width="1000"
