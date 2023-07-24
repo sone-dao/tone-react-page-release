@@ -9,29 +9,52 @@ import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
 import SongListPod from './components/SongListPod'
 
+interface IReleaseData {
+  artwork: {
+    cover: string
+  }
+  display: string
+  artists: any
+  description: string
+}
+
+const releaseDataDefault: IReleaseData = {
+  artwork: {
+    cover: '',
+  },
+  display: '',
+  artists: [],
+  description: '',
+}
+
 interface IReleasePageProps {}
 
 export default function ReleasePage({}: IReleasePageProps) {
-  const [release, setRelease] = useState<any>()
-  const [songs, setSongs] = useState<any>()
+  const [release, setRelease] = useState<IReleaseData>(releaseDataDefault)
+  const [songs, setSongs] = useState<any[]>([])
   const params = useParams()
+
+  const previewImageUrl = (release.artwork.cover || '') + '/large'
 
   useEffect(() => {
     loadRelease()
-  })
+  }, [])
+
   return (
     <Page className={styles.component}>
-      <Image
-        alt=""
-        height="1000"
-        width="1000"
-        src={release.artwork.cover + '/large'}
-        style={{ maxWidth: '100%', height: 'auto' }}
-        priority
-      />
+      {release.artwork.cover && (
+        <Image
+          alt=""
+          height="1000"
+          width="1000"
+          src={previewImageUrl}
+          style={{ maxWidth: '100%', height: 'auto' }}
+          priority
+        />
+      )}
       <ReleasePlayer
-        releaseDisplay={release.display}
-        artists={release.artists}
+        releaseDisplay={release.display || ''}
+        artists={release.artists || ''}
       />
       <div className={styles.songList}>
         {songs.length &&
