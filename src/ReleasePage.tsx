@@ -34,8 +34,6 @@ export default function ReleasePage({}: IReleasePageProps) {
   const [songs, setSongs] = useState<any[]>([])
   const params = useParams()
 
-  const previewImageUrl = (release.artwork.cover || '') + '/large'
-
   useEffect(() => {
     loadRelease()
   }, [])
@@ -47,7 +45,11 @@ export default function ReleasePage({}: IReleasePageProps) {
           alt=""
           height="1000"
           width="1000"
-          src={previewImageUrl}
+          src={
+            release.artwork.cover
+              ? release.artwork.cover
+              : 'https://placehold.co/500x500'
+          }
           style={{ maxWidth: '100%', height: 'auto' }}
         />
       )}
