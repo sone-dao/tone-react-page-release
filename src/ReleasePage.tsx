@@ -40,22 +40,26 @@ export default function ReleasePage({}: IReleasePageProps) {
 
   return (
     <Page className={styles.component}>
-      {release.artwork.cover && (
+      {release.artwork.cover ? (
+        <Image
+          alt=""
+          height="500"
+          width="500"
+          src="https://placehold.co/500x500"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
+      ) : (
         <Image
           alt=""
           height="1000"
           width="1000"
-          src={
-            release.artwork.cover
-              ? release.artwork.cover
-              : 'https://placehold.co/500x500'
-          }
+          src={release.artwork.cover}
           style={{ maxWidth: '100%', height: 'auto' }}
         />
       )}
       <ReleasePlayer
-        releaseDisplay={release.display || ''}
-        artists={release.artists || ''}
+        releaseDisplay={release.display}
+        artists={release.artists}
       />
       <div className={styles.songList}>
         {songs.length &&

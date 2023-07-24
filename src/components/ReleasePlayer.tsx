@@ -12,8 +12,8 @@ interface IReleasePlayerProps {
 }
 
 export default function ReleasePlayer({
-  releaseDisplay,
-  artists,
+  releaseDisplay = '',
+  artists = [],
 }: IReleasePlayerProps) {
   return (
     <div className={styles.player}>
@@ -22,16 +22,24 @@ export default function ReleasePlayer({
         className="fa-sharp fa-solid fa-play"
       />
       <div className={styles.playerInfo}>
-        <span style={{ fontWeight: 'bold' }}>{releaseDisplay}</span>
-        <span>
-          by{' '}
-          {artists.map((artist: any, i: number) => (
-            <span key={i}>
-              {i > 0 && ', '}
-              <Link href={`https://`}>{artist.display}</Link>
-            </span>
-          ))}
-        </span>
+        {releaseDisplay ? (
+          <span style={{ fontWeight: 'bold' }}>{releaseDisplay}</span>
+        ) : (
+          <span />
+        )}
+        {artists.length ? (
+          <span>
+            by{' '}
+            {artists.map((artist: any, i: number) => (
+              <span key={i}>
+                {i > 0 && ', '}
+                <Link href={`https://`}>{artist.display}</Link>
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span />
+        )}
       </div>
     </div>
   )
