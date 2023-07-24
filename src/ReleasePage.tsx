@@ -2,7 +2,6 @@
 
 import { Page } from '@sone-dao/tone-react-core-ui'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
@@ -27,12 +26,13 @@ const releaseDataDefault: IReleaseData = {
   description: '',
 }
 
-interface IReleasePageProps {}
+interface IReleasePageProps {
+  params: { releaseId: string }
+}
 
-export default function ReleasePage({}: IReleasePageProps) {
+export default function ReleasePage({ params }: IReleasePageProps) {
   const [release, setRelease] = useState<IReleaseData>(releaseDataDefault)
   const [songs, setSongs] = useState<any[]>([])
-  const params = useParams()
 
   useEffect(() => {
     loadRelease()
