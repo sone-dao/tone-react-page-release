@@ -13,11 +13,6 @@ export default function ReleaseDescription({
   const [isOpen, setOpen] = useState<boolean>(false)
   const overLength = description.length > 1500 ? true : false
 
-  console.log({
-    description,
-    length: description.length,
-  })
-
   return (
     <>
       <div
