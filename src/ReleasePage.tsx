@@ -1,8 +1,5 @@
 import { Page } from '@sone-dao/tone-react-core-ui'
 import styles from './ReleasePage.module.scss'
-import ReleaseDescription from './components/ReleaseDescription'
-import ReleasePlayer from './components/ReleasePlayer'
-import SongListPod from './components/SongListPod'
 
 export default function ReleasePage({
   release,
@@ -13,6 +10,7 @@ export default function ReleasePage({
 }) {
   return (
     <Page className={styles.component}>
+      <div>Hello from inside the page component</div>
       {/*<Image
         alt=""
         height="1000"
@@ -20,7 +18,6 @@ export default function ReleasePage({
         src={release.artwork.cover + '/large'}
         style={{ maxWidth: '100%', height: 'auto' }}
         priority
-  />*/}
       <ReleasePlayer
         releaseDisplay={release.display}
         artists={release.artists}
@@ -31,7 +28,7 @@ export default function ReleasePage({
             <SongListPod key={i} index={i} song={song} />
           ))}
       </div>
-      <ReleaseDescription description={release.description} />
+          <ReleaseDescription description={release.description} />*/}
     </Page>
   )
 }
