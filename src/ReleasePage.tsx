@@ -1,6 +1,7 @@
 import { Page } from '@sone-dao/tone-react-core-ui'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
+import SongListPod from './components/SongListPod'
 
 export default function ReleasePage({
   release,
@@ -22,13 +23,13 @@ export default function ReleasePage({
       <ReleasePlayer
         releaseDisplay={release.display}
         artists={release.artists}
-      />
+      />*/}
       <div className={styles.songList}>
         {songs.length &&
           songs.map((song: any, i: number) => (
             <SongListPod key={i} index={i} song={song} />
           ))}
-      </div>*/}
+      </div>
       <ReleaseDescription description={release.description} />
     </Page>
   )
