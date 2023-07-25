@@ -1,6 +1,6 @@
 {
   "name": "@sone-dao/tone-react-page-release",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "main": "dist/cjs/src/index.js",
   "module": "dist/esm/src/index.js",
   "types": "dist/index.d.ts",
