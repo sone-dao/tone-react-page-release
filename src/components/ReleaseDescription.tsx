@@ -15,14 +15,7 @@ export default function ReleaseDescription({
 
   return (
     <>
-      <div
-        style={{
-          height: isOpen ? 'auto' : '33vh',
-        }}
-        className={styles.releaseDescription}
-      >
-        {description}
-      </div>
+      <div className={styles.releaseDescription}>{description}</div>
       {overLength && (
         <div className={styles.readMore}>
           <span onClick={() => setOpen(!isOpen)}>
