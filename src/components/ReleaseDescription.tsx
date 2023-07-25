@@ -16,7 +16,7 @@ export default function ReleaseDescription({
   return (
     <>
       <div
-        style={{ height: isOpen ? '100%' : '30vh' }}
+        style={{ maxHeight: isOpen ? '100%' : '33vh' }}
         className={styles.releaseDescription}
       >
         {description}
