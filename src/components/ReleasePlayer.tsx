@@ -33,7 +33,7 @@ export default function ReleasePlayer({
             {artists.map((artist: any, i: number) => (
               <span key={i}>
                 {i > 0 && ', '}
-                <Link href={`https://`}>{artist.display}</Link>
+                <Link href="#">{artist.display}</Link>
               </span>
             ))}
           </span>
