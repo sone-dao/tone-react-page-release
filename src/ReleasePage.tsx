@@ -1,4 +1,7 @@
+'use client'
+
 import { Page } from '@sone-dao/tone-react-core-ui'
+import Image from 'next/image'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
@@ -13,11 +16,13 @@ export default function ReleasePage({
 }) {
   return (
     <Page className={styles.component}>
-      <img
+      <Image
+        alt=""
         height="1000"
         width="1000"
         src={release.artwork.cover + '/large'}
         style={{ maxWidth: '100%', height: 'auto' }}
+        priority
       />
       <ReleasePlayer
         releaseDisplay={release.display}
