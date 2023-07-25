@@ -4,40 +4,13 @@ import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
 import SongListPod from './components/SongListPod'
 
-async function getRelease(releaseId: string) {
-  const response = await fetch(
-    'https://api.tone.audio/v1/catalog/releases?releaseId=' + releaseId,
-    { cache: 'no-store' }
-  )
-
-  !response.ok && console.log(response)
-
-  const data = await response.json()
-
-  return data.release
-}
-
-async function getReleaseSongs(releaseId: string) {
-  const response = await fetch(
-    'https://api.tone.audio/v1/catalog/releases/' + releaseId + '/songs',
-    { cache: 'no-store' }
-  )
-
-  !response.ok && console.log(response)
-
-  const data = await response.json()
-
-  return data.songs
-}
-
-export default async function ReleasePage({
-  params,
+export default function ReleasePage({
+  release,
+  songs,
 }: {
-  params: { id: string }
+  release: any
+  songs: any
 }) {
-  const release = await getRelease(params.id)
-  const songs = await getReleaseSongs(params.id)
-
   return (
     <Page className={styles.component}>
       <img
