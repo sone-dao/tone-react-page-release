@@ -19,7 +19,7 @@ export default function ReleaseDescription({
         overflow: 'auto',
       }
     : {
-        height: '33%',
+        height: '300px',
         overflow: 'hidden',
       }
 
