@@ -83,18 +83,17 @@
 }
 
 .releaseDesc {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   line-height: 1.6;
   padding: 1rem;
   white-space: pre-line;
   overflow: hidden;
 
-  &.closed {
-    height: 33vh;
-  }
-
-  &.opened {
-    height: auto;
+  p {
+    display: block;
+    width: 100%;
   }
 }
 

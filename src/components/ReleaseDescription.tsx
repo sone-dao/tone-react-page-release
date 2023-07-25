@@ -13,13 +13,9 @@ export default function ReleaseDescription({
   const [isOpen, setOpen] = useState<boolean>(false)
   const overLength = description.length > 1500 ? true : false
 
-  const className = `${styles.releaseDesc} ${isOpen ? 'opened' : 'closed'}`
-
   return (
-    <>
-      <div className={className}>
-        <p>{description}</p>
-      </div>
+    <div className={styles.releaseDesc}>
+      <p style={{ height: isOpen ? 'auto' : '33vh' }}>{description}</p>
       {overLength && (
         <div className={styles.readMore}>
           <span onClick={() => setOpen(!isOpen)}>
@@ -27,6 +23,6 @@ export default function ReleaseDescription({
           </span>
         </div>
       )}
-    </>
+    </div>
   )
 }
