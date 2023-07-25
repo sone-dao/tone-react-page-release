@@ -19,7 +19,7 @@ export default function ReleaseDescription({
         style={{ height: isOpen ? 'auto' : '33vh' }}
         className={styles.releaseDescription}
       >
-        {description}
+        <p>{description}</p>
       </div>
       {overLength && (
         <div className={styles.readMore}>
