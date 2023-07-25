@@ -2,6 +2,7 @@ import { Page } from '@sone-dao/tone-react-core-ui'
 import Image from 'next/image'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
+import ReleasePlayer from './components/ReleasePlayer'
 import SongListPod from './components/SongListPod'
 
 export default function ReleasePage({
@@ -21,11 +22,12 @@ export default function ReleasePage({
         style={{ maxWidth: '100%', height: 'auto' }}
         priority
       />
-      {/*
-      <ReleasePlayer
-        releaseDisplay={release.display}
-        artists={release.artists}
-      />*/}
+      {
+        <ReleasePlayer
+          releaseDisplay={release.display}
+          artists={release.artists}
+        />
+      }
       <div className={styles.songList}>
         {songs.length &&
           songs.map((song: any, i: number) => (
