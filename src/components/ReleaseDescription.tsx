@@ -13,13 +13,11 @@ export default function ReleaseDescription({
   const [isOpen, setOpen] = useState<boolean>(false)
   const overLength = description.length > 1500 ? true : false
 
+  const className = `${styles.releaseDesc} ${isOpen ? 'opened' : 'closed'}`
+
   return (
     <>
-      <div
-        className={`${styles.releaseDescription} ${
-          isOpen ? 'opened' : 'closed'
-        }`}
-      >
+      <div className={className}>
         <p>{description}</p>
       </div>
       {overLength && (
