@@ -1,6 +1,6 @@
 'use client'
 
-import { CSSProperties, useState } from 'react'
+import { useState } from 'react'
 import styles from '../ReleasePage.module.scss'
 
 interface IReleaseDescriptionProps {
@@ -13,19 +13,13 @@ export default function ReleaseDescription({
   const [isOpen, setOpen] = useState<boolean>(false)
   const overLength = description.length > 1500 ? true : false
 
-  const style: CSSProperties = isOpen
-    ? {
-        height: 'auto',
-        overflow: 'auto',
-      }
-    : {
-        height: '300px',
-        overflow: 'hidden',
-      }
-
   return (
     <>
-      <div style={style} className={styles.releaseDescription}>
+      <div
+        className={`${styles.releaseDescription} ${
+          isOpen ? 'opened' : 'closed'
+        }`}
+      >
         <p>{description}</p>
       </div>
       {overLength && (
