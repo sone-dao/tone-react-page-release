@@ -1,59 +1,51 @@
-'use client'
-
 import { Page } from '@sone-dao/tone-react-core-ui'
-import { useEffect, useState } from 'react'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
 import SongListPod from './components/SongListPod'
 
-interface IReleaseData {
-  artwork: {
-    cover: string
-  }
-  display: string
-  artists: any
-  description: string
+async function getRelease(releaseId: string) {
+  const response = await fetch(
+    'https://api.tone.audio/v1/catalog/releases?releaseId=' + releaseId,
+    { cache: 'no-store' }
+  )
+
+  !response.ok && console.log(response)
+
+  const data = await response.json()
+
+  return data.release
 }
 
-const releaseDataDefault: IReleaseData = {
-  artwork: {
-    cover: '',
-  },
-  display: '',
-  artists: [],
-  description: '',
+async function getReleaseSongs(releaseId: string) {
+  const response = await fetch(
+    'https://api.tone.audio/v1/catalog/releases/' + releaseId + '/songs',
+    { cache: 'no-store' }
+  )
+
+  !response.ok && console.log(response)
+
+  const data = await response.json()
+
+  return data.songs
 }
 
-interface IReleasePageProps {
-  params: { releaseId: string }
-}
-
-export default function ReleasePage({ params }: IReleasePageProps) {
-  const [release, setRelease] = useState<IReleaseData>(releaseDataDefault)
-  const [songs, setSongs] = useState<any[]>([])
-
-  useEffect(() => {
-    loadRelease()
-  }, [])
+export default async function ReleasePage({
+  params,
+}: {
+  params: { id: string }
+}) {
+  const release = await getRelease(params.id)
+  const songs = await getReleaseSongs(params.id)
 
   return (
     <Page className={styles.component}>
-      {!release.artwork.cover ? (
-        <img
-          height="500"
-          width="500"
-          src="https://placehold.co/500x500/png"
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      ) : (
-        <img
-          height="1000"
-          width="1000"
-          src={release.artwork.cover + '/large'}
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      )}
+      <img
+        height="1000"
+        width="1000"
+        src={release.artwork.cover + '/large'}
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
       <ReleasePlayer
         releaseDisplay={release.display}
         artists={release.artists}
@@ -67,35 +59,4 @@ export default function ReleasePage({ params }: IReleasePageProps) {
       <ReleaseDescription description={release.description} />
     </Page>
   )
-
-  async function loadRelease() {
-    getRelease(params.releaseId).then((release) => setRelease(release))
-    getReleaseSongs(params.releaseId).then((songs) => setSongs(songs))
-  }
-
-  async function getRelease(releaseId: string) {
-    const response = await fetch(
-      'https://api.tone.audio/v1/catalog/releases?releaseId=' + releaseId,
-      { cache: 'no-store' }
-    )
-
-    !response.ok && console.log(response)
-
-    const data = await response.json()
-
-    return data.release
-  }
-
-  async function getReleaseSongs(releaseId: string) {
-    const response = await fetch(
-      'https://api.tone.audio/v1/catalog/releases/' + releaseId + '/songs',
-      { cache: 'no-store' }
-    )
-
-    !response.ok && console.log(response)
-
-    const data = await response.json()
-
-    return data.songs
-  }
 }
