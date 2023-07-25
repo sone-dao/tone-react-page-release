@@ -86,13 +86,14 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  line-height: 1.6;
+
   padding: 1rem;
-  white-space: pre-line;
-  overflow: hidden;
 
   p {
     display: block;
+    line-height: 1.6;
+    overflow: hidden;
+    white-space: pre-line;
     width: 100%;
   }
 }
