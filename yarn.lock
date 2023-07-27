@@ -381,6 +381,11 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
+"@sone-dao/sone-react-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@sone-dao/sone-react-utils/-/sone-react-utils-1.0.1.tgz"
+  integrity sha512-48hho0n41lqMY5NByAqnMPy11vVN5xXOYwTapdOvgRHVtVZVboA5U/zRJcLEzbvTN/P8w6gzCuqXfgh/xyTHiA==
+
 "@sone-dao/tone-react-api@^0.15.0":
   version "0.15.9"
   resolved "https://registry.npmjs.org/@sone-dao/tone-react-api/-/tone-react-api-0.15.9.tgz"

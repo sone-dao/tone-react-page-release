@@ -1,6 +1,8 @@
 'use client'
 
+import { pub, sub } from '@sone-dao/sone-react-utils'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import styles from '../ReleasePage.module.scss'
 
 interface IReleasePlayerProps {
@@ -15,12 +17,32 @@ export default function ReleasePlayer({
   releaseDisplay = '',
   artists = [],
 }: IReleasePlayerProps) {
+  const [isPlaying, setPlaying] = useState<boolean>(false)
+
+  useEffect(() => {
+    sub('__TONE_PLAYER__', 'update.isPlaying', (isPlaying: boolean) =>
+      setPlaying(isPlaying)
+    )
+  }, [])
+
+  useEffect(() => {
+    console.log({ isPlaying })
+  }, [isPlaying])
+
   return (
     <div className={styles.player}>
-      <i
-        style={{ paddingLeft: '1.66rem' }}
-        className="fa-sharp fa-solid fa-play"
-      />
+      {isPlaying ? (
+        <i
+          className="fa-fw fa-sharp fa-solid fa-pause"
+          onClick={() => pub('__TONE_PLAYER__', 'audio.pause')}
+        />
+      ) : (
+        <i
+          style={{ paddingLeft: '1.25rem' }}
+          className="fa-fw fa-sharp fa-solid fa-play"
+          onClick={() => pub('__TONE_PLAYER__', 'audio.play')}
+        />
+      )}
       <div className={styles.playerInfo}>
         {releaseDisplay ? (
           <span style={{ fontWeight: 'bold' }}>{releaseDisplay}</span>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from './ReleasePage.module.scss'
 import ReleaseDescription from './components/ReleaseDescription'
 import ReleasePlayer from './components/ReleasePlayer'
-import SongListPod from './components/SongListPod'
+import SongList from './components/SongList'
 
 export default function ReleasePage({
   release,
@@ -28,12 +28,7 @@ export default function ReleasePage({
           artists={release.artists}
         />
       }
-      <div className={styles.songList}>
-        {songs.length &&
-          songs.map((song: any, i: number) => (
-            <SongListPod key={i} index={i} song={song} />
-          ))}
-      </div>
+      <SongList songs={songs} />
       <ReleaseDescription description={release.description} />
     </Page>
   )
